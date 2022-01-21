@@ -2,8 +2,11 @@ package com.example.myapplication.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.GridLayout
 import com.example.myapplication.Greeting
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.features.trending.api.TrendingMovies
 import com.example.myapplication.features.trending.domain.entity.Movie
 import com.example.myapplication.features.trending.domain.entity.TrendingResponseEntity
@@ -18,22 +21,24 @@ fun greet(): String {
 class MainActivity : AppCompatActivity() {
 
     lateinit var response: List<Movie>
-    lateinit var tv: TextView
+    lateinit var rvMovies: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tv = findViewById(R.id.text_view)
-        tv.text = greet()
+        rvMovies = findViewById(R.id.rvMovies)
 
         getTrendingMovies()
+
     }
 
     fun getTrendingMovies(){
         GlobalScope.launch(Dispatchers.Main){
             response = TrendingMovies().getTrendingMovies()
-            tv.text = "Film completati"
+            rvMovies.layoutManager = GridLayoutManager(applicationContext, 2)
+            rvMovies.adapter = MovieItemAdapter(response as ArrayList<Movie>)
         }
     }
 }
