@@ -13,6 +13,8 @@
 		2A060C27279AAEC500E6F416 /* UIHomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A060C26279AAEC500E6F416 /* UIHomePageModel.swift */; };
 		2A060C2A279AB51300E6F416 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2A060C29279AB51300E6F416 /* SDWebImageSwiftUI */; };
 		2A060C2C279ABA4B00E6F416 /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A060C2B279ABA2800E6F416 /* MoviePoster.swift */; };
+		2A5E0554279ACEF30082AF8F /* MovieDetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E0553279ACEF30082AF8F /* MovieDetailPageView.swift */; };
+		2A5E0556279ACF230082AF8F /* UIMovieDetailPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E0555279ACF230082AF8F /* UIMovieDetailPageModel.swift */; };
 		7555FF83242A565900829871 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		2A060C26279AAEC500E6F416 /* UIHomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHomePageModel.swift; sourceTree = "<group>"; };
 		2A060C2B279ABA2800E6F416 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
+		2A5E0553279ACEF30082AF8F /* MovieDetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPageView.swift; sourceTree = "<group>"; };
+		2A5E0555279ACF230082AF8F /* UIMovieDetailPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMovieDetailPageModel.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +64,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2A5E0557279ACFEB0082AF8F /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E0553279ACEF30082AF8F /* MovieDetailPageView.swift */,
+				2A5E0555279ACF230082AF8F /* UIMovieDetailPageModel.swift */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		2A5E0558279ACFFE0082AF8F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7555FF82242A565900829871 /* HomePageView.swift */,
+				2A060C26279AAEC500E6F416 /* UIHomePageModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
@@ -81,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* HomePageView.swift */,
+				2A5E0558279ACFFE0082AF8F /* Home */,
+				2A5E0557279ACFEB0082AF8F /* MovieDetail */,
 				2A060C2B279ABA2800E6F416 /* MoviePoster.swift */,
-				2A060C26279AAEC500E6F416 /* UIHomePageModel.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -198,8 +220,10 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				2A060C2C279ABA4B00E6F416 /* MoviePoster.swift in Sources */,
+				2A5E0556279ACF230082AF8F /* UIMovieDetailPageModel.swift in Sources */,
 				2A060C27279AAEC500E6F416 /* UIHomePageModel.swift in Sources */,
 				7555FF83242A565900829871 /* HomePageView.swift in Sources */,
+				2A5E0554279ACEF30082AF8F /* MovieDetailPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

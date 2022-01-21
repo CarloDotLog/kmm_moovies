@@ -5,10 +5,10 @@ import com.example.myapplication.features.trending.domain.entity.MediaType
 import kotlinx.serialization.Serializable
 
 @Serializable
-class CastModel(val profile_path: String,
+class CastModel(val profile_path: String?,
                 val name: String) {
 
     fun asEntity(): Cast {
-        return Cast(profile_path, name)
+        return Cast(profile_path ?: "", name)
     }
 }
