@@ -2,14 +2,15 @@ package com.example.myapplication.features.trending.data.model
 
 import com.example.myapplication.features.trending.domain.entity.MediaType
 import com.example.myapplication.features.trending.domain.entity.Movie
-import com.example.myapplication.features.trending.domain.entity.OriginalLanguage
 import com.example.myapplication.features.trending.domain.entity.TrendingResponseEntity
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 
+@Serializable
 data class TrendingResponseModel(
     val page: Long,
+    @SerialName("results")
     val movies: List<MovieModel>,
 
     @SerialName("total_pages")
@@ -20,8 +21,10 @@ data class TrendingResponseModel(
 
 )
 
+@Serializable
 data class MovieModel(
-    @SerialName("original_language") val originalLanguageModel: OriginalLanguageModel,
+    @SerialName("original_language")
+    val originalLanguageModel: String,
     @SerialName("original_title")
     val originalTitle: String? = null,
     @SerialName("poster_path")
@@ -42,7 +45,6 @@ data class MovieModel(
     @SerialName("genre_ids")
     val genreIDS: List<Long>,
     val popularity: Double,
-    @SerialName("media_type") val mediaTypeModel: MediaTypeModel,
     @SerialName("original_name")
     val originalName: String? = null,
     @SerialName("first_air_date")
@@ -52,8 +54,8 @@ data class MovieModel(
     val name: String? = null
 ) {
     fun asEntity(): Movie{
-        return Movie(originalLanguageModel.asEntity(), originalTitle, posterPath, video, voteAverage, overview,
-            releaseDate, voteCount, title,adult, backdropPath, id, genreIDS, popularity, mediaTypeModel.asEntity(),
+        return Movie(originalLanguageModel, originalTitle, posterPath, video, voteAverage, overview,
+            releaseDate, voteCount, title,adult, backdropPath, id, genreIDS, popularity,
             originalName, firstAirDate, originCountry, name)
     }
 }
@@ -81,32 +83,6 @@ enum class MediaTypeModel(val value: String) {
             }
 
         override fun serialize(encoder: Encoder, value: MediaTypeModel) {
-            return encoder.encodeString(value.value)
-        }
-    }
-}
-
-@Serializable
-enum class OriginalLanguageModel(val value: String){
-    En("en");
-
-    fun asEntity(): OriginalLanguage {
-        return OriginalLanguage.valueOf(value)
-    }
-
-    companion object : KSerializer<OriginalLanguageModel> {
-        override val descriptor: SerialDescriptor
-            get() {
-                return PrimitiveSerialDescriptor("quicktype.OriginalLanguage", PrimitiveKind.STRING)
-            }
-
-        override fun deserialize(decoder: Decoder): OriginalLanguageModel =
-            when (val value = decoder.decodeString()) {
-                "en" -> En
-                else -> throw IllegalArgumentException("OriginalLanguage could not parse: $value")
-            }
-
-        override fun serialize(encoder: Encoder, value: OriginalLanguageModel) {
             return encoder.encodeString(value.value)
         }
     }

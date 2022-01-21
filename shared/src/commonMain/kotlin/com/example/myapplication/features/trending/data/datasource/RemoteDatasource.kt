@@ -40,7 +40,7 @@ class RemoteDatasource {
             }
         }
 
-        var response = client.get<TrendingResponseModel>("/path/to/get/endpoint") { headers {
+        var response = client.get<TrendingResponseModel>("/trending/all/day") { headers {
             append(HttpHeaders.Accept, "text/json")
             append(HttpHeaders.UserAgent, "ktor client") }
         }
