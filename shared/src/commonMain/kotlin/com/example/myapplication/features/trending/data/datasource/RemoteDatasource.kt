@@ -14,8 +14,8 @@ import io.ktor.http.*
 
 class RemoteDatasource {
 
-    val BASE_URL = "https://api.themoviedb.org/3"
-    val API_KEY = "4132c9aa360ec3726a2313792fbaf408"
+    val BASE_URL = "api.themoviedb.org/3"
+    val API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTMyYzlhYTM2MGVjMzcyNmEyMzEzNzkyZmJhZjQwOCIsInN1YiI6IjYxZTkxOTUwNTdkMzc4MDA5NzY3Y2RkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H-nIkwCp57E-nQSaqdNE8_pK_1DDd8s4cdIIyVXCxOE"
 
     suspend fun getTrendingMovies(): List<MovieModel> {
 

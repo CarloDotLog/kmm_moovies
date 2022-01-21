@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     fun getTrendingMovies(){
         GlobalScope.launch(Dispatchers.Main){
             response = TrendingMovies().getTrendingMovies()
-            tv.text = ""
+            tv.text = "Film completati"
         }
     }
 }
