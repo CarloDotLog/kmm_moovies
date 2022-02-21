@@ -1,4 +1,4 @@
-package com.example.myapplication.android
+package com.example.myapplication.android.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.android.R
 import com.example.myapplication.features.trending.domain.entity.Movie
 import com.squareup.picasso.Picasso
 
-class MovieItemAdapter(val moviesList: ArrayList<Movie>): RecyclerView.Adapter<MovieItemAdapter.ViewHolder>() {
+class MovieItemAdapter(): RecyclerView.Adapter<MovieItemAdapter.ViewHolder>() {
+
+    var onItemClick: ((Movie) -> Unit)? = null
+    var moviesList: ArrayList<Movie> = arrayListOf()
 
     override fun getItemCount(): Int {
         return moviesList.size
@@ -21,6 +25,11 @@ class MovieItemAdapter(val moviesList: ArrayList<Movie>): RecyclerView.Adapter<M
         Log.d("URL IMAGE", moviesList[position].posterPath)
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+moviesList[position].posterPath).into(holder.image);
         holder.title.text = moviesList[position].title.toString()
+
+        // set on click listener
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,8 +39,10 @@ class MovieItemAdapter(val moviesList: ArrayList<Movie>): RecyclerView.Adapter<M
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
+
     }
 
 }
